@@ -21,8 +21,10 @@ environment:
   sdk: ">=2.7.0 <3.0.0"
 
 dependencies:
+  # 1.20.4, on Mac OS X 10.15.619G2021 
   flutter:
     sdk: flutter
+  get:
 
 
   # The following adds the Cupertino Icons font to your application.
