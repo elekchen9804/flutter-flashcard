@@ -24,7 +24,8 @@ dependencies:
   # 1.20.4, on Mac OS X 10.15.619G2021 
   flutter:
     sdk: flutter
-  get:
+  get: ^3.11.1
+  json_annotation: ^2.0.0
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -34,7 +35,8 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-
+  json_model: ^0.0.2
+  json_serializable: ^2.0.0
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
