@@ -19,8 +19,8 @@ class Home extends StatelessWidget {
         // Replace the 8 lines Navigator.push by a simple Get.to(). You don't need context
         body: Center(
           child: RaisedButton(
-            child: Text("Go to Other"),
-            onPressed: () => Get.to(Other()),
+            child: Text("Go to Flashcard list"),
+            onPressed: () => Get.to(FlashcardList()),
           ),
         ),
         floatingActionButton: FloatingActionButton(
@@ -55,64 +55,56 @@ class Other extends StatelessWidget {
     );
   }
 }
-// class MyApp extends StatelessWidget {
-//   // This widget is the root of your application.
-//   @override
-//   Widget build(BuildContext context) {
-//     return MaterialApp(
-//       title: 'Flutter Demo',
-//       theme: ThemeData(
-//         primarySwatch: Colors.blue,
-//         visualDensity: VisualDensity.adaptivePlatformDensity,
-//       ),
-//       home: MyHomePage(title: 'Flutter Demo Home Page'),
-//     );
-//   }
-// }
 
-// class MyHomePage extends StatefulWidget {
-//   MyHomePage({Key key, this.title}) : super(key: key);
+class FlashcardList extends StatelessWidget {
+// You can ask Get to find a Controller that is being used by another page and redirect you to it.
+  final Controller c = Get.find();
 
-//   final String title;
+  final cardList = [
+    {'id': '0', 'title': 'English words', 'itemAmount': '300'},
+    {'id': '1', 'title': 'Japanese words', 'itemAmount': '400'}
+  ];
 
-//   @override
-//   _MyHomePageState createState() => _MyHomePageState();
-// }
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text("Card List")),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: cardList.map((item) => new CardSet(item)).toList(),
+        ),
+      ),
+    );
+  }
+}
 
-// class _MyHomePageState extends State<MyHomePage> {
-//   int _counter = 0;
+class CardSet extends StatelessWidget {
+  final cardContent;
 
-//   void _incrementCounter() {
-//     setState(() {
-//       _counter++;
-//     });
-//   }
+  CardSet(this.cardContent);
 
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(
-//         title: Text(widget.title),
-//       ),
-//       body: Center(
-//         child: Column(
-//           mainAxisAlignment: MainAxisAlignment.center,
-//           children: <Widget>[
-//             Text(
-//               'You have pushed the button this many times:',
-//             ),
-//             Text(
-//               '$_counter',
-//               style: Theme.of(context).textTheme.headline4,
-//             ),
-//           ],
-//         ),
-//       ),
-//       floatingActionButton: FloatingActionButton(
-//         onPressed: _incrementCounter,
-//         tooltip: 'Increment',
-//         child: Icon(Icons.add),
-//       ), // This trailing comma makes auto-formatting nicer for build methods.
-//     );
-//   }
-// }
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: double.infinity,
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Card(
+          elevation: 4,
+          child: InkWell(
+            splashColor: Colors.blue.withAlpha(30),
+            onTap: () {
+              print('Card tapped.');
+            },
+            child: ListTile(
+              leading: Icon(Icons.library_books),
+              title: Text(cardContent['title']),
+              subtitle: Text(cardContent['itemAmount']),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
