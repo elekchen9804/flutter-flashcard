@@ -1,12 +1,37 @@
 import 'package:flashcard/widget/card_set.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 
-void main() => runApp(GetMaterialApp(home: Home()));
+import 'pages/login.dart';
+
+void main() => runApp(MyApp());
 
 class Controller extends GetxController {
   var count = 0.obs;
   increment() => count++;
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return GetMaterialApp(
+      theme: ThemeData(
+        // 設定預設字體
+        textTheme: GoogleFonts.ubuntuTextTheme(
+          Theme.of(context).textTheme,
+        ),
+      ),
+      home: Login(),
+      builder: (context, child) {
+        //讓字體大小不受外部影響
+        return MediaQuery(
+          child: child,
+          data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
+        );
+      },
+    );
+  }
 }
 
 class Home extends StatelessWidget {
