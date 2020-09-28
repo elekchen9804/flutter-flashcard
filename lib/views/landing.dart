@@ -3,6 +3,8 @@ import 'package:flashcard/main.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import 'home.dart';
+
 class Landing extends StatelessWidget {
   final globalCtrl = GlobalCtrl.to;
   @override
@@ -78,7 +80,7 @@ class Landing extends StatelessWidget {
                       ),
                       onPressed: () {
                         globalCtrl.changeLoginStatus(true);
-                        Get.off(Home());
+                        Get.offNamed('/home');
                       },
                     ),
                   ),
