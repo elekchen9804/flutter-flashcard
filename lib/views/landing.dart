@@ -1,6 +1,10 @@
+import 'package:flashcard/ctrl/global_ctrl.dart';
+import 'package:flashcard/main.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
-class Login extends StatelessWidget {
+class Landing extends StatelessWidget {
+  final globalCtrl = GlobalCtrl.to;
   @override
   Widget build(BuildContext context) {
     // 取得statusBar的高,避開
@@ -11,7 +15,7 @@ class Login extends StatelessWidget {
         padding: EdgeInsets.fromLTRB(20, 210, 20, 30), // 左上右下
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('assets/images/login_bg.jpg'),
+            image: AssetImage('assets/images/landing_bg.jpg'),
             fit: BoxFit.cover,
           ),
         ),
@@ -26,12 +30,15 @@ class Login extends StatelessWidget {
               child: Container(
                 child: Column(
                   children: [
-                    Text(
-                      'Memorize',
-                      style: TextStyle(
-                        color: Color(0xff083FD2),
-                        fontSize: 50.0,
-                        height: 2.0,
+                    Padding(
+                      padding: const EdgeInsets.all(5.0),
+                      child: Text(
+                        'Memorize',
+                        style: TextStyle(
+                          color: Color(0xff083FD2),
+                          fontSize: 50.0,
+                          height: 1.0,
+                        ),
                       ),
                     ),
                     Text(
@@ -48,11 +55,11 @@ class Login extends StatelessWidget {
               ), // 主播資訊
             ),
             Expanded(
-              flex: 8,
-              child: Container(), // 中央區域 (動畫層 & 聊天區)
+              flex: 9,
+              child: Container(), // 中央區域
             ),
             Expanded(
-              flex: 4, // 底部功能按鈕
+              flex: 5, // 底部功能按鈕
               child: Container(
                 child: Column(children: [
                   SizedBox(
@@ -61,7 +68,7 @@ class Login extends StatelessWidget {
                     child: RaisedButton(
                       child: Text(
                         'Sign up for free',
-                        style: TextStyle(fontSize: 20.0),
+                        style: TextStyle(fontSize: 22.0),
                       ),
                       padding: EdgeInsets.all(22),
                       color: Color(0xff0BD8E8),
@@ -69,9 +76,22 @@ class Login extends StatelessWidget {
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(3.0),
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        globalCtrl.changeLoginStatus(true);
+                        Get.off(Home());
+                      },
                     ),
                   ),
+                  FlatButton(
+                    child: Text(
+                      'Or log in',
+                      style: TextStyle(fontSize: 22.0),
+                    ),
+                    padding: EdgeInsets.all(22),
+                    color: Colors.transparent,
+                    textColor: Color(0xff0BD8E8),
+                    onPressed: () {},
+                  )
                 ]),
               ),
             )

@@ -3,16 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import 'pages/login.dart';
+import 'ctrl/global_ctrl.dart';
+import 'views/landing.dart';
 
 void main() => runApp(MyApp());
 
-class Controller extends GetxController {
-  var count = 0.obs;
-  increment() => count++;
-}
-
 class MyApp extends StatelessWidget {
+  // Instantiate your class using Get.put() to make it available for all "child" routes there.
+  final GlobalCtrl globalCtrl = Get.put(GlobalCtrl());
+
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
@@ -22,7 +21,7 @@ class MyApp extends StatelessWidget {
           Theme.of(context).textTheme,
         ),
       ),
-      home: Login(),
+      home: globalCtrl.isLogin.value ? Home() : Landing(),
       builder: (context, child) {
         //讓字體大小不受外部影響
         return MediaQuery(
@@ -35,13 +34,10 @@ class MyApp extends StatelessWidget {
 }
 
 class Home extends StatelessWidget {
-  // Instantiate your class using Get.put() to make it available for all "child" routes there.
-  final Controller c = Get.put(Controller());
-
   @override
   Widget build(context) => Scaffold(
         // Use Obx(()=> to update Text() whenever count is changed.
-        appBar: AppBar(title: Obx(() => Text("Clicks: ${c.count}"))),
+        appBar: AppBar(title: Text('Home')),
         // Replace the 8 lines Navigator.push by a simple Get.to(). You don't need context
         body: Center(
           child: RaisedButton(
@@ -51,41 +47,12 @@ class Home extends StatelessWidget {
         ),
         floatingActionButton: FloatingActionButton(
           child: Icon(Icons.add),
-          onPressed: c.increment,
+          onPressed: () {},
         ),
       );
 }
 
-class Other extends StatelessWidget {
-  // You can ask Get to find a Controller that is being used by another page and redirect you to it.
-  final Controller c = Get.find();
-
-  @override
-  Widget build(context) {
-    // Access the updated count variable
-    return Scaffold(
-      // Use Obx(()=> to update Text() whenever count is changed.
-      appBar: AppBar(title: Obx(() => Text("Clicks: ${c.count}"))),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text("${c.count}"),
-            RaisedButton(
-              child: Text("Go to Home"),
-              onPressed: () => Get.back(),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
 class FlashcardList extends StatelessWidget {
-// You can ask Get to find a Controller that is being used by another page and redirect you to it.
-  final Controller c = Get.find();
-
   final cardList = [
     {'id': '0', 'title': 'English words', 'itemAmount': '300'},
     {'id': '1', 'title': 'Japanese words', 'itemAmount': '400'}
