@@ -1,4 +1,5 @@
 import 'package:flashcard/views/home.dart';
+import 'package:flashcard/views/login.dart';
 import 'package:flashcard/widget/card_set.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -21,6 +22,7 @@ class MyApp extends StatelessWidget {
       defaultTransition: Transition.native,
       getPages: [
         GetPage(name: '/landing', page: () => Landing()),
+        GetPage(name: '/login', page: () => Login()),
         GetPage(name: '/home', page: () => Home()),
         GetPage(name: '/flashcardList', page: () => FlashcardList()),
       ],
