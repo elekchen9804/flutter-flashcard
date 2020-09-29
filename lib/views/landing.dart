@@ -1,9 +1,7 @@
 import 'package:flashcard/ctrl/global_ctrl.dart';
-import 'package:flashcard/main.dart';
+import 'package:flashcard/styles/base.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
-import 'home.dart';
 
 class Landing extends StatelessWidget {
   final globalCtrl = GlobalCtrl.to;
@@ -73,8 +71,8 @@ class Landing extends StatelessWidget {
                         style: TextStyle(fontSize: 22.0),
                       ),
                       padding: EdgeInsets.all(22),
-                      color: Color(0xff0BD8E8),
-                      textColor: Colors.white,
+                      color: primaryColor,
+                      textColor: primaryTextColor,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(3.0),
                       ),
@@ -92,7 +90,9 @@ class Landing extends StatelessWidget {
                     padding: EdgeInsets.all(22),
                     color: Colors.transparent,
                     textColor: Color(0xff0BD8E8),
-                    onPressed: () {},
+                    onPressed: () {
+                      Get.toNamed('/login');
+                    },
                   )
                 ]),
               ),
