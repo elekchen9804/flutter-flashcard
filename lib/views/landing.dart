@@ -12,7 +12,7 @@ class Landing extends StatelessWidget {
     // scaffold 內可以吃到全域字體
     return Scaffold(
       body: Container(
-        padding: EdgeInsets.fromLTRB(20, 210, 20, 30), // 左上右下
+        padding: EdgeInsets.fromLTRB(20, 140, 20, 30), // 左上右下
         decoration: BoxDecoration(
           image: DecorationImage(
             image: AssetImage('assets/images/landing_bg.jpg'),
@@ -26,7 +26,7 @@ class Landing extends StatelessWidget {
               height: statusBarHeight, // statusBar高
             ),
             Expanded(
-              flex: 5,
+              flex: 4,
               child: Container(
                 child: Column(
                   children: [
@@ -55,11 +55,11 @@ class Landing extends StatelessWidget {
               ), // 主播資訊
             ),
             Expanded(
-              flex: 9,
+              flex: 7,
               child: Container(), // 中央區域
             ),
             Expanded(
-              flex: 5, // 底部功能按鈕
+              flex: 7, // 底部功能按鈕
               child: Container(
                 child: Column(children: [
                   SizedBox(
