@@ -26,9 +26,10 @@ class Landing extends StatelessWidget {
               height: statusBarHeight, // statusBar高
             ),
             Expanded(
-              flex: 4,
+              flex: 3,
               child: Container(
                 child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Padding(
                       padding: const EdgeInsets.all(5.0),
@@ -55,47 +56,50 @@ class Landing extends StatelessWidget {
               ), // 主播資訊
             ),
             Expanded(
-              flex: 7,
-              child: Container(), // 中央區域
-            ),
-            Expanded(
-              flex: 7, // 底部功能按鈕
+              flex: 3, // 底部功能按鈕
               child: Container(
-                child: Column(children: [
-                  SizedBox(
-                    // 使用 expand 就不用 width
-                    width: double.infinity,
-                    child: RaisedButton(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    SizedBox(
+                      // 使用 expand 就不用 width
+                      width: double.infinity,
+                      child: RaisedButton(
+                        child: Text(
+                          'Sign up for free',
+                          style: TextStyle(fontSize: 22.0),
+                        ),
+                        padding: EdgeInsets.all(22),
+                        color: primaryColor,
+                        textColor: primaryButtonTextColor,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(3.0),
+                        ),
+                        onPressed: () {
+                          globalCtrl.changeLoginStatus(true);
+                          Get.offNamed('/home');
+                        },
+                      ),
+                    ),
+                    FlatButton(
                       child: Text(
-                        'Sign up for free',
+                        'Or log in',
                         style: TextStyle(fontSize: 22.0),
                       ),
                       padding: EdgeInsets.all(22),
-                      color: primaryColor,
-                      textColor: primaryTextColor,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(3.0),
-                      ),
+                      color: Colors.transparent,
+                      textColor: Color(0xff0BD8E8),
                       onPressed: () {
-                        globalCtrl.changeLoginStatus(true);
-                        Get.offNamed('/home');
+                        Get.toNamed('/login');
                       },
-                    ),
-                  ),
-                  FlatButton(
-                    child: Text(
-                      'Or log in',
-                      style: TextStyle(fontSize: 22.0),
-                    ),
-                    padding: EdgeInsets.all(22),
-                    color: Colors.transparent,
-                    textColor: Color(0xff0BD8E8),
-                    onPressed: () {
-                      Get.toNamed('/login');
-                    },
-                  )
-                ]),
+                    )
+                  ],
+                ),
               ),
+            ),
+            Expanded(
+              flex: 1,
+              child: Container(),
             )
           ],
         ),

@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../main.dart';
-
 class Home extends StatelessWidget {
   @override
   Widget build(context) => Scaffold(
