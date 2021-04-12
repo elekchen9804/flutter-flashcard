@@ -1,9 +1,10 @@
 import 'package:flashcard/ctrl/global_ctrl.dart';
+import 'package:flashcard/services/router_service.dart';
 import 'package:flashcard/styles/base.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class Landing extends StatelessWidget {
+class LandingPage extends StatelessWidget {
   final globalCtrl = GlobalCtrl.to;
   @override
   Widget build(BuildContext context) {
@@ -90,7 +91,7 @@ class Landing extends StatelessWidget {
                       color: Colors.transparent,
                       textColor: Color(0xff0BD8E8),
                       onPressed: () {
-                        Get.toNamed('/login');
+                        Get.toNamed(RouterService.loginPath);
                       },
                     )
                   ],

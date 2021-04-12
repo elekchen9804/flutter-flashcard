@@ -1,12 +1,8 @@
-import 'package:flashcard/views/home.dart';
-import 'package:flashcard/views/login.dart';
-import 'package:flashcard/widget/card_set.dart';
+import 'package:flashcard/services/router_service.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-
 import 'ctrl/global_ctrl.dart';
-import 'views/landing.dart';
 
 void main() => runApp(MyApp());
 
@@ -20,12 +16,7 @@ class MyApp extends StatelessWidget {
       // https://github.com/jonataslaw/getx/blob/master/documentation/en_US/route_management.md#navigation-with-named-routes
       initialRoute: globalCtrl.isLogin.value ? '/home' : '/landing',
       defaultTransition: Transition.native,
-      getPages: [
-        GetPage(name: '/landing', page: () => Landing()),
-        GetPage(name: '/login', page: () => Login()),
-        GetPage(name: '/home', page: () => Home()),
-        GetPage(name: '/flashcardList', page: () => FlashcardList()),
-      ],
+      getPages: RouterService.generateRoute,
       theme: ThemeData(
         // 設定預設字體
         textTheme: GoogleFonts.ubuntuTextTheme(
@@ -40,26 +31,6 @@ class MyApp extends StatelessWidget {
           data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
         );
       },
-    );
-  }
-}
-
-class FlashcardList extends StatelessWidget {
-  final cardList = [
-    {'id': '0', 'title': 'English words', 'itemAmount': '300'},
-    {'id': '1', 'title': 'Japanese words', 'itemAmount': '400'}
-  ];
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text("Card List")),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: cardList.map((item) => new CardSet(item)).toList(),
-        ),
-      ),
     );
   }
 }

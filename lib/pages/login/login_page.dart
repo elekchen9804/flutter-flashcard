@@ -3,7 +3,7 @@ import 'package:flashcard/styles/base.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class Login extends StatelessWidget {
+class LoginPage extends StatelessWidget {
   final globalCtrl = GlobalCtrl.to;
   @override
   Widget build(BuildContext context) {
