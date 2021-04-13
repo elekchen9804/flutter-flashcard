@@ -1,13 +1,9 @@
+import 'package:flashcard/pages/flashcardlist/flashcardlist_ctrl.dart';
 import 'package:flutter/material.dart';
-
+import 'package:get/get.dart';
 import '../../widget/card_set.dart';
 
-class FlashcardListPage extends StatelessWidget {
-  final cardList = [
-    {'id': '0', 'title': 'English words', 'itemAmount': '300'},
-    {'id': '1', 'title': 'Japanese words', 'itemAmount': '400'}
-  ];
-
+class FlashcardListPage extends GetView<FlashcardListCtrl> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -15,7 +11,8 @@ class FlashcardListPage extends StatelessWidget {
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
-          children: cardList.map((item) => new CardSet(item)).toList(),
+          children:
+              controller.cardList.map((item) => new CardSet(item)).toList(),
         ),
       ),
     );

@@ -1,10 +1,10 @@
-import 'package:flashcard/ctrl/global_ctrl.dart';
+import 'package:flashcard/core/services/router_service.dart';
+import 'package:flashcard/pages/login/login_ctrl.dart';
 import 'package:flashcard/styles/base.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class LoginPage extends StatelessWidget {
-  final globalCtrl = GlobalCtrl.to;
+class LoginPage extends GetView<LoginCtrl> {
   @override
   Widget build(BuildContext context) {
     // 取得statusBar的高,避開
@@ -229,8 +229,8 @@ class LoginPage extends StatelessWidget {
                       borderRadius: BorderRadius.circular(3.0),
                     ),
                     onPressed: () {
-                      globalCtrl.changeLoginStatus(true);
-                      Get.offNamed('/home');
+                      controller.changeLoginStatus(true);
+                      RouterService.toHome();
                     },
                   ),
                 ),

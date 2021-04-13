@@ -1,17 +1,18 @@
-import 'package:flashcard/services/router_service.dart';
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:flashcard/core/services/router_service.dart';
+import 'package:flashcard/pages/home/home_ctrl.dart';
+import 'package:flutter/material.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends GetView<HomeCtrl> {
   @override
   Widget build(context) => Scaffold(
         // Use Obx(()=> to update Text() whenever count is changed.
         appBar: AppBar(title: Text('Home')),
-        // Replace the 8 lines Navigator.push by a simple Get.to(). You don't need context
         body: Center(
           child: RaisedButton(
-            child: Text("Go to Flashcard list"),
-            onPressed: () => Get.toNamed(RouterService.flashcardListPath),
+            child: Text('Go to Flashcard list'),
+            onPressed: () =>
+                RouterService.toError(errorContent: 'Error From Home Page'),
           ),
         ),
         floatingActionButton: FloatingActionButton(

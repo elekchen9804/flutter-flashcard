@@ -1,11 +1,10 @@
-import 'package:flashcard/ctrl/global_ctrl.dart';
-import 'package:flashcard/services/router_service.dart';
+import 'package:flashcard/core/services/router_service.dart';
+import 'package:flashcard/pages/landing/landing_ctrl.dart';
 import 'package:flashcard/styles/base.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class LandingPage extends StatelessWidget {
-  final globalCtrl = GlobalCtrl.to;
+class LandingPage extends GetView<LandingCtrl> {
   @override
   Widget build(BuildContext context) {
     // 取得statusBar的高,避開
@@ -77,8 +76,8 @@ class LandingPage extends StatelessWidget {
                           borderRadius: BorderRadius.circular(3.0),
                         ),
                         onPressed: () {
-                          globalCtrl.changeLoginStatus(true);
-                          Get.offNamed('/home');
+                          controller.changeLoginStatus(true);
+                          RouterService.toHome();
                         },
                       ),
                     ),
@@ -91,7 +90,7 @@ class LandingPage extends StatelessWidget {
                       color: Colors.transparent,
                       textColor: Color(0xff0BD8E8),
                       onPressed: () {
-                        Get.toNamed(RouterService.loginPath);
+                        RouterService.toLogin();
                       },
                     )
                   ],

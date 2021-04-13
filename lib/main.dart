@@ -1,8 +1,8 @@
-import 'package:flashcard/services/router_service.dart';
+import 'package:flashcard/core/services/router_service.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'ctrl/global_ctrl.dart';
+import 'core/ctrl/global_ctrl.dart';
 
 void main() => runApp(MyApp());
 
